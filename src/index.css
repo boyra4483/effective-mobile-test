@@ -1,0 +1,9 @@
+@import url("./reset.css");
+
+body {
+	max-width: 1200px;
+	margin: 0 auto;
+
+	padding-inline-start: 1rem;
+	padding-inline-end: 1rem;
+}

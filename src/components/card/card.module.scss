@@ -1,0 +1,32 @@
+@font-face {
+	font-family: roboto;
+	src: url("../../assets/fonts/roboto/Roboto-Medium.ttf");
+	font-weight: 500;
+}
+
+.figure {
+	display: flex;
+	flex-direction: column;
+}
+
+.caption {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.movie-name {
+	text-align: center;
+	max-width: 200px;
+	font-family: roboto;
+	font-weight: 500;
+	margin-block-end: 0.2rem;
+}
+
+.movie-year {
+}
+
+.img {
+	object-fit: cover;
+	margin-block-end: 0.5rem;
+}

@@ -1,0 +1,17 @@
+@font-face {
+	font-family: "roboto";
+	src: url("../../assets/fonts/roboto/Roboto-Regular.ttf");
+	font-weight: 400;
+}
+
+.search {
+	font-family: "roboto";
+	font-weight: 400;
+	outline: none;
+
+	border: 1px solid grey;
+	border-radius: 50px;
+
+	padding-inline-start: 1rem;
+	padding-inline-end: 1rem;
+}

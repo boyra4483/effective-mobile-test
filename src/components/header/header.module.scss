@@ -1,8 +1,4 @@
-@font-face {
-	font-family: roboto;
-	src: url("../../assets/fonts/roboto/Roboto-Medium.ttf");
-	font-weight: 700;
-}
+@use "../../font-declarations/roboto/roboto";
 
 .header {
 	display: flex;
@@ -16,10 +12,11 @@
 
 .title {
 	flex: 1;
-	text-align: center;
 
-	margin-inline-start: 184.8px;
 	font-family: roboto;
 	font-weight: 700;
 	font-size: 2rem;
+
+	margin-inline-start: 11.55rem;
+	text-align: center;
 }

@@ -16,7 +16,6 @@ export default function App() {
 
 	useEffect(() => {
 		let ignore = false;
-		console.log("fetching movies");
 		(async () => {
 			const movies = await fetchMovies(1, "");
 			if (!ignore) {
@@ -36,7 +35,6 @@ export default function App() {
 	}
 
 	function handleClick(movieId: number) {
-		console.log(isVisibleModal);
 		setIsVisibleModal(true);
 		setSelectedMovie(movies?.find(movie => movie.id === movieId) || null);
 	}

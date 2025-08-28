@@ -21,28 +21,28 @@ export default function Modal({
 }: ModalProps) {
 	return (
 		<div className={styles["modal"]}>
-			<section className={styles["content"]}>
-				<figure className={styles["media-object"]}>
+			<section className={styles["modal__content"]}>
+				<figure className={styles["modal__media-object"]}>
 					<img
 						width="200px"
 						height="300px"
 						src={img}
 						alt="movie poster"
-						className={styles["media"]}
+						className={styles["modal__media"]}
 					/>
-					<figcaption className={styles["object"]}>
-						<h2 className={styles["movie-name"]}>{movieName}</h2>
-						<time className={styles["movie-year"]} dateTime={year}>
+					<figcaption className={styles["modal__details"]}>
+						<h2 className={styles["modal__movie-name"]}>{movieName}</h2>
+						<time className={styles["modal__movie-year"]} dateTime={year}>
 							{year}
 						</time>
-						<ul className={styles["genres"]}>{getGenres(genres)}</ul>
-						<p className={styles["description"]}>{description}</p>
+						<ul className={styles["modal__genres"]}>{getGenres(genres)}</ul>
+						<p className={styles["modal__description"]}>{description}</p>
 					</figcaption>
 				</figure>
-				<div className={styles["rating"]}>
+				<div className={styles["modal__rating"]}>
 					<span>{rating}</span>
 				</div>
-				<div onClick={onClose} className={styles["close"]}></div>
+				<div onClick={onClose} className={styles["modal__close"]}></div>
 			</section>
 		</div>
 	);
@@ -50,7 +50,7 @@ export default function Modal({
 
 function getGenres(genres: string[]) {
 	return genres.map(genre => (
-		<li className={styles["genre"]} key={genre}>
+		<li className={styles["modal__genre"]} key={genre}>
 			{genre}
 		</li>
 	));

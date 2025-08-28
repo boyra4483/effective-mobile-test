@@ -10,10 +10,9 @@ const moviesConfig: AxiosRequestConfig = {
 	transformResponse: transformer
 };
 
-function transformer(data: string) {
+function transformer(data: string): Movies {
 	const parsedData = JSON.parse(data);
-	const movies: Movies = parsedData.docs;
-	return movies;
+	return parsedData.docs;
 }
 
 export default moviesConfig;

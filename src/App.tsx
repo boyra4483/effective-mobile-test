@@ -1,14 +1,17 @@
 import styles from "./app.module.scss";
 import React, { useEffect, useState } from "react";
-import { type Movies } from "./types/movies";
+import { type Movie, type Movies } from "./types/movies";
 import Header from "./components/header/Header";
 import Search from "./components/search/Search";
 import Card from "./components/card/Card";
 import fetchMovies from "./api/fetchMovies";
+import Modal from "./components/modal/Modal";
 
 export default function App() {
 	const [searchText, setSearchText] = useState<string>("");
 	const [movies, setMovies] = useState<Movies | null>(null);
+	const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
+	const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 	const [page, setPage] = useState<number>(1);
 
 	useEffect(() => {
@@ -32,6 +35,12 @@ export default function App() {
 		setMovies(movies);
 	}
 
+	function handleClick(movieId: number) {
+		console.log(isVisibleModal);
+		setIsVisibleModal(true);
+		setSelectedMovie(movies?.find(movie => movie.id === movieId) || null);
+	}
+
 	async function handleScroll(e: React.UIEvent<HTMLUListElement>) {
 		const currentTarget = e.currentTarget;
 		if (
@@ -51,17 +60,32 @@ export default function App() {
 			</Header>
 			<main className={styles["content"]}>
 				<ul onScroll={handleScroll} className={styles["movies"]}>
-					{getMovies(movies)}
+					{getMovies(movies, handleClick)}
 				</ul>
+				{isVisibleModal ? (
+					<Modal
+						movieName={`${selectedMovie!.name}`}
+						img={`${selectedMovie!.poster.previewUrl}`}
+						genres={selectedMovie!.genres.map(genre => genre.name)}
+						rating={+selectedMovie!.rating.kp.toFixed(1)}
+						year={`${selectedMovie!.year}`}
+						description={`${selectedMovie!.description}`}
+						onClose={() => setIsVisibleModal(false)}
+					/>
+				) : null}
 			</main>
 		</>
 	);
 }
 
-function getMovies(movies: Movies | null) {
+function getMovies(movies: Movies | null, handleClick: (id: number) => void) {
 	return movies?.map((movie, i) => {
 		return (
-			<li className={styles["movie"]} key={i}>
+			<li
+				className={styles["movie"]}
+				key={i}
+				onClick={() => handleClick(movie.id)}
+			>
 				<Card
 					year={`${movie.year}`}
 					src={movie.poster.previewUrl}

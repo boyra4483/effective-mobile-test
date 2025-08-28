@@ -1,0 +1,14 @@
+.movies {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	justify-items: center;
+
+	gap: 2rem;
+
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+.movie {
+	cursor: pointer;
+}

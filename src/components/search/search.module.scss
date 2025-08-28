@@ -1,8 +1,4 @@
-@font-face {
-	font-family: "roboto";
-	src: url("../../assets/fonts/roboto/Roboto-Regular.ttf");
-	font-weight: 400;
-}
+@use "../../font-declarations/roboto/roboto";
 
 .search {
 	font-family: "roboto";

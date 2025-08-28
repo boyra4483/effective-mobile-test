@@ -2,13 +2,12 @@
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	justify-items: center;
-
 	gap: 2rem;
 
-	max-height: 600px;
+	max-height: 37.5rem;
 	overflow-y: auto;
 }
 
-.movie {
+.movies__movie {
 	cursor: pointer;
 }

@@ -54,7 +54,7 @@ export default function App() {
 			<Header>
 				<Search value={searchText} onSearch={handleSearch} />
 			</Header>
-			<main className={styles["content"]}>
+			<main>
 				<ul onScroll={handleScroll} className={styles["movies"]}>
 					{getMovies(movies, handleClick)}
 				</ul>
@@ -78,7 +78,7 @@ function getMovies(movies: Movies | null, handleClick: (id: number) => void) {
 	return movies?.map((movie, i) => {
 		return (
 			<li
-				className={styles["movie"]}
+				className={styles["movies__movie"]}
 				key={i}
 				onClick={() => handleClick(movie.id)}
 			>

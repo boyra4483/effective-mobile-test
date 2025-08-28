@@ -8,7 +8,7 @@ interface HeaderProps {
 export default function Header({ children }: HeaderProps) {
 	return (
 		<header className={styles["header"]}>
-			<h1 className={styles["title"]}>Каталог фильмов</h1>
+			<h1 className={styles["header__title"]}>Каталог фильмов</h1>
 			{children}
 		</header>
 	);

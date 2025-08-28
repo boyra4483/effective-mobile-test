@@ -1,9 +1,10 @@
+import styles from "./app.module.scss";
 import React, { useState } from "react";
 import { type Movies } from "./types/movies";
 import Header from "./components/header/Header";
 import Search from "./components/search/Search";
-import moviesConfig from "./axios/moviesConfig";
-import axios from "axios";
+import Card from "./components/card/Card";
+import fetchMovies from "./api/fetchMovies";
 
 export default function App() {
 	const [searchText, setSearchText] = useState<string>("");
@@ -11,8 +12,8 @@ export default function App() {
 
 	async function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
 		setSearchText(e.target.value);
-		const moviesRes = await axios<Movies>(e.target.value, moviesConfig);
-		setMovies(moviesRes.data);
+		const movies = await fetchMovies(1, e.target.value);
+		setMovies(movies);
 	}
 
 	return (
@@ -20,6 +21,23 @@ export default function App() {
 			<Header>
 				<Search value={searchText} onSearch={handleSearch} />
 			</Header>
+			<main className={styles["content"]}>
+				<ul className={styles["movies"]}>{getMovies(movies)}</ul>
+			</main>
 		</>
 	);
+}
+
+function getMovies(movies: Movies | null) {
+	return movies?.map((movie, i) => {
+		return (
+			<li className={styles["movie"]} key={i}>
+				<Card
+					year={`${movie.year}`}
+					src={movie.poster.previewUrl}
+					movieName={movie.name}
+				/>
+			</li>
+		);
+	});
 }

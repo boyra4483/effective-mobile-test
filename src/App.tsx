@@ -40,11 +40,9 @@ export default function App() {
 	}
 
 	async function handleScroll(e: React.UIEvent<HTMLUListElement>) {
-		const currentTarget = e.currentTarget;
-		if (
-			currentTarget.scrollTop + currentTarget.clientHeight >=
-			currentTarget.scrollHeight - 20
-		) {
+		const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
+
+		if (scrollTop + clientHeight >= scrollHeight - 20) {
 			const res = await fetchMovies(page + 1, "");
 			setMovies([...movies!, ...res]);
 			setPage(page + 1);

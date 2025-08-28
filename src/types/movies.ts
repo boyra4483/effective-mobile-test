@@ -1,6 +1,7 @@
 export type Movies = Movie[];
 
 export interface Movie {
+	id: number;
 	name: string;
 	description: string;
 	year: number;
